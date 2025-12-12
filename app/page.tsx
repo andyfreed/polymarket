@@ -6,7 +6,7 @@ import { PositionsTable } from "@/components/PositionsTable";
 type ApiResponse = {
   user?: string;
   positions?: unknown[];
-  data?: unknown[];
+  raw?: unknown;
   error?: string;
   [key: string]: unknown;
 };
@@ -33,7 +33,7 @@ export default function Page() {
     }
   }
 
-  const positions = (res?.positions ?? res?.data ?? []) as unknown[];
+  const positions = (res?.positions ?? []) as unknown[];
 
   return (
     <>

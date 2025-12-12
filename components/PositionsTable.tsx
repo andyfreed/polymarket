@@ -44,12 +44,11 @@ export function PositionsTable({ positions }: { positions: Position[] }) {
             pickString(p, ["market", "market_title", "title"]) ||
             pickString(p, ["market_id", "marketId"]) ||
             "(unknown)";
-          const outcome =
-            pickString(p, ["outcome", "outcome_name", "outcomeId", "outcome_id"]) || "";
+          const outcome = pickString(p, ["outcome", "outcome_name", "outcomeId", "outcome_id"]) || "";
           const shares = pickNumber(p, ["shares", "size"]);
           const avg = pickNumber(p, ["avg_price", "avgPrice"]);
-          const cur = pickNumber(p, ["current_price", "currentPrice"]);
-          const uPnl = pickNumber(p, ["unrealized_pnl", "unrealizedPnl"]);
+          const cur = pickNumber(p, ["current_price", "currentPrice", "curPrice"]);
+          const uPnl = pickNumber(p, ["unrealized_pnl", "unrealizedPnl", "cashPnl", "unrealizedPnlUsd"]);
 
           return (
             <tr key={idx}>
