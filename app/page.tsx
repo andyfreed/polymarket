@@ -89,7 +89,13 @@ export default function Page() {
           <div>
             <div style={{ fontWeight: 700 }}>Top 10 movers (24h)</div>
             <div className="small">
-              {moversRes?.asOf ? <>As of <span className="code">{moversRes.asOf}</span></> : "Based on Gamma API oneDayPriceChange."}
+              {moversRes?.asOf ? (
+                <>
+                  As of <span className="code">{moversRes.asOf}</span>
+                </>
+              ) : (
+                "Based on Gamma API oneDayPriceChange."
+              )}
             </div>
           </div>
           <button
@@ -108,7 +114,7 @@ export default function Page() {
             }}
             disabled={moversLoading}
           >
-            {moversLoading ? "Refreshing" : "Refresh"}
+            {moversLoading ? "Refreshing..." : "Refresh"}
           </button>
         </div>
 
@@ -125,12 +131,12 @@ export default function Page() {
         <div className="row">
           <input
             className="input"
-            placeholder="0x wallet address (optional if POLYMARKET_USER_ADDRESS is set)"
+            placeholder="0x... wallet address (optional if POLYMARKET_USER_ADDRESS is set)"
             value={address}
             onChange={(e) => setAddress(e.target.value)}
           />
           <button className="button" onClick={load} disabled={loading}>
-            {loading ? "Loading" : "Load positions"}
+            {loading ? "Loading..." : "Load positions"}
           </button>
         </div>
 
@@ -144,7 +150,7 @@ export default function Page() {
           <PositionsTable positions={positions as Record<string, unknown>[]} />
         ) : (
           <div className="small" style={{ marginTop: 12 }}>
-            Click Load positions to fetch.
+            Click "Load positions" to fetch.
           </div>
         )}
 
